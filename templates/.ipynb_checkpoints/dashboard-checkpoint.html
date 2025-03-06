@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-container {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #4facfe;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00f2fe;
+        }
+
+        .video-container {
+            width: 80%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" alt="Face Detection Feed">
+        </div>
+
+        <div class="button-container">
+            <form action="{{ url_for('run_hotspot_analysis_route') }}" method="POST">
+                <button type="submit">Run Hotspot Analysis</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
