@@ -53,7 +53,13 @@ def run_hotspot_analysis():
             return 'green'
 
     # Create the map
-    m = folium.Map(location=[20.5937, 78.9629], zoom_start=5)
+    m = folium.Map(
+        location=[20.5937, 78.9629],
+        zoom_start=5,
+        tiles='CartoDB dark_matter',  # Dark theme tiles
+        attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    )
+
     for _, row in data_india.iterrows():
         folium.CircleMarker(
             location=[row['Latitude'], row['Longitude']],

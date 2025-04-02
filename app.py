@@ -2,6 +2,11 @@ from flask import Flask, render_template, redirect, url_for, request, Response
 import cv2
 import subprocess
 from hotspot_analysis import run_hotspot_analysis
+from social_analysis import generate_social_heatmap
+
+import pandas as pd
+
+
 
 app = Flask(__name__)
 
@@ -129,6 +134,13 @@ def video_feed():
 def run_hotspot_analysis_route():
     map_html = run_hotspot_analysis()  # Call the function directly
     return render_template('hotspot_map.html', map_html=map_html)
+
+@app.route('/news_map')
+def news_map():
+    social_map_html = generate_social_heatmap()
+    return render_template('news_map.html', social_map=social_map_html)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
